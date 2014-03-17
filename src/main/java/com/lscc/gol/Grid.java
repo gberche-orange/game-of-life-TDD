@@ -31,30 +31,6 @@ public class Grid {
         return size;
     }
 
-    public Grid nextGeneration() {
-        Grid newGrid = new Grid(cells.length);
-        for (int x = 0; x < cells.length; x++) {
-            for (int y = 0; y < cells[x].length; y++) {
-                Cell cell = cells[x][y];
-                List<Coordinate> neighbours = new Coordinate(x, y).neighboursFor(this);
-                int liveNeighbourCount = liveCellsCountFor(neighbours);
-                Cell newCell = cell.nextGeneration(liveNeighbourCount);
-                newGrid.put(newCell, x, y);
-            }
-        }
-        return newGrid;
-    }
-
-    private int liveCellsCountFor(List<Coordinate> neighbours) {
-        int counter = 0;
-        for (Coordinate coordinate : neighbours) {
-            if (cells[coordinate.getX()][coordinate.getY()].isAlive()) {
-                counter++;
-            }
-        }
-        return counter;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

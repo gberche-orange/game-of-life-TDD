@@ -11,13 +11,6 @@ public class LiveCell implements Cell {
         return true;
     }
 
-    public Cell nextGeneration(int liveNeighbours) {
-        if (liveNeighbours < 2 || liveNeighbours > 3) {
-            return DeadCell.INSTANCE;
-        }
-        return this;
-    }
-
     public boolean equals(Object obj) {
         if (obj == null || getClass() != obj.getClass()) return false;
         LiveCell cell = (LiveCell) obj;
